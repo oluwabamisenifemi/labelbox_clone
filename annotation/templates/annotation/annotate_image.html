@@ -1,0 +1,15 @@
+{% extends 'annotation/base.html' %}
+
+{% block content %}
+    <h1>Annotate Images for Task: {{ task.name }}</h1>
+    {% for image in images %}
+        <img src="{{ image.image_file.url }}" alt="Image" width="300"><br>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="image_id" value="{{ image.id }}">
+            <label>Label:</label>
+            <input type="text" name="label" required>
+            <button type="submit">Save Annotation</button>
+        </form>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'annotation/base.html' %}
+
+
+{% block content %}
+
+
+<div class="wrapper" style="display: flex;">
+
+    <div class="labels" style="margin-right:2cm;" class="sidebar">
+        <h1 style="text-align: center;color:rgba(0, 0, 0, 0.322); margin-top: 1cm">labels for {{project.name}}</h1>
+        <ul style="margin-top: 1cm; ">
+            {% for label in labels %}
+                <li class="project">
+                    <div >
+                        <div class="{% if selected_project and project.id == selected_project.id %}active{% endif %}">
+                            {{ label.name }}
+                        </div>
+                        <a class="delete" href="{% url 'deletelabel' project_id=project.id label_id=label.id %}" class="btn btn-danger">Delete</a>
+                        
+                    </div>
+                    
+                </li>
+            {% endfor %}
+        </ul>
+       
+       
+    </div>
+
+    <div class="parent_div">
+<div class="container mt-5">
+    <div class="line">
+    <h1 style="color: rgba(0, 0, 0, 0.411);">Add a new label to Project: {{ project.name }}</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ label_form.as_p }}
+        <button class="functions" type="submit" class="btn btn-primary">add</button>
+    </form>
+
+    <a class="page" href="{% url 'project_list' project.id %}" class="btn btn-secondary mt-3">{{ project.name }}</a>
+</div></div></div>
+</div>
+
+
+<style>
+
+    .delete{
+        text-decoration: none;
+        margin-left: 5cm;
+        margin-right: 1cm;
+        height: 1cm;
+        width:0.5cm;
+        text-align: center;
+        color: red;
+        background-color:white ;
+        border-radius: 5px;
+
+    }
+
+    .delete:hover{
+        color: lightblue;
+        width:1cm;
+        
+        
+
+    }
+
+    .project {
+        
+        text-decoration: none;
+        color: rgb(8, 173, 228);
+        font-weight: bold;
+        display: block;
+        padding: 10px;
+        border-radius: 0.3cm;
+        
+        margin-right: 0.5cm;
+
+        height: .3in;
+    }
+
+   
+
+    .parent-div {
+        display: flex;
+        justify-content: center;  /* Centers horizontally */
+        align-items: center;      /* Centers vertically */
+        height: 100vh;            /* Make the parent div take the full height of the viewport */
+    }
+    
+    .container  {
+        position: fixed;
+        width: auto; 
+        height: auto;
+        padding: 10px;
+        border: 6px solid rgba(36, 109, 177, 0.603);
+        background-color:rgba(2, 29, 51, 0.315);
+        border-radius: 10px; /* Set a fixed width */
+        margin-left: 4in;
+        margin-top: 1in;
+    }
+    .line{
+        background-color:rgba(44, 129, 168, 0.315) ;
+        width: auto; 
+        height: auto;
+        padding: 2cm;
+        border: 3px dashed rgba(8, 15, 83, 0.747);
+        justify-content: center;
+        text-align: center;
+    }
+    .labels{
+        position: fixed;
+        top: 45px; /* Adjust for navbar height */
+        left: 0;
+        width: 340px;
+        height: calc(100vh - 45px); /* Full height minus navbar */
+        padding-left: 10px;
+        padding-right: 0;
+        border-right: 3px solid  rgba(0, 0, 0, 0.123);;
+        overflow-y: auto;
+
+    }
+
+    .labels ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%; 
+        text-align: center;
+    }
+
+    .labels ul li {
+        margin-bottom: 20px;
+    }
+    
+    .functions{
+        
+        
+        
+        color:rgba(35, 113, 230, 0.651);
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 400;
+        text-align: center;
+        margin-left: 1.5cm;
+        margin-bottom: 1.5cm;
+        padding: 14px 20px;
+        text-decoration: none;
+        border-radius: 0.3cm;
+        border: 3px solid rgba(31, 90, 146, 0.322);
+        
+        width:4cm ;
+    }
+
+
+    .functions:hover{
+        border: 3px solid rgb(31, 94, 146);
+        color:rgb(0, 140, 255);
+        
+    }
+
+    .page{
+        
+        color: black;
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       
+        font-weight: 400;
+        text-align: center;
+        margin-left: 1cm;
+        margin-top: 1cm;
+        
+        
+        padding: 14px 20px;
+        text-decoration: none;
+        border-radius: 0.3cm;
+        border: 3px solid rgba(0, 0, 0, 0.062);
+        width:4cm ;
+    }
+
+    .page:hover{
+        background-color: #ddd;
+        color: black;
+        border: 3px solid rgba(0, 0, 0, 0.493);
+    }
+</style>
+{% endblock %}

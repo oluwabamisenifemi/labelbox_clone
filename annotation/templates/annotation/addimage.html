@@ -1,0 +1,103 @@
+{% extends 'annotation/base.html' %}
+
+{% block content %}
+<div class="parent-div">
+<div class="container mt-5">
+    <div class="line">
+    <h1 style="color: rgba(0, 0, 0, 0.411);">Add an image to your project.</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ image_form.as_p }}
+        <button class="functions" type="submit" class="btn btn-primary">Upload Image</button>
+    </form>
+
+    <a class="page" href="{% url 'project_list' project.id %}" class="btn btn-secondary mt-3">{{ project.name }}</a>
+</div></div></div>
+
+
+
+
+<style>
+
+
+
+    .parent-div {
+        display: flex;
+        justify-content: center;  /* Centers horizontally */
+        align-items: center;      /* Centers vertically */
+        height: 100vh;            /* Make the parent div take the full height of the viewport */
+    }
+    
+    .container  {
+        width: auto; 
+        height: auto;
+        padding: 10px;
+        border: 6px solid rgb(36, 177, 83);
+        background-color:rgba(10, 51, 2, 0.315);
+        border-radius: 10px; /* Set a fixed width */
+    }
+    .line{
+        background-color:rgba(64, 168, 44, 0.315) ;
+        width: auto; 
+        height: auto;
+        padding: 2cm;
+        border: 3px dashed rgba(20, 83, 8, 0.747);
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .functions{
+        
+        
+        
+        color:rgba(52, 230, 35, 0.651);
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 400;
+        text-align: center;
+        margin-left: 1.5cm;
+        margin-bottom: 1.5cm;
+        padding: 14px 20px;
+        text-decoration: none;
+        border-radius: 0.3cm;
+        border: 3px solid rgba(31, 146, 70, 0.322);
+        
+        width:4cm ;
+    }
+
+
+    .functions:hover{
+        border: 3px solid rgb(31, 146, 69);
+        color:rgb(0, 255, 85);
+        
+    }
+
+    .page{
+        
+        color: black;
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       
+        font-weight: 400;
+        text-align: center;
+        margin-left: 1cm;
+        margin-top: 1cm;
+        
+        
+        padding: 14px 20px;
+        text-decoration: none;
+        border-radius: 0.3cm;
+        border: 3px solid rgba(0, 0, 0, 0.062);
+        width:4cm ;
+    }
+
+    .page:hover{
+        background-color: #ddd;
+        color: black;
+        border: 3px solid rgba(0, 0, 0, 0.493);
+    }
+</style>
+
+{% endblock %}
+

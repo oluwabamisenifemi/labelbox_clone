@@ -1,0 +1,100 @@
+{% extends 'annotation/base.html' %}
+
+{% block content %}
+<p ><h1 style="margin-bottom: 1.5cm; margin-top: 1.5cm; color:rgba(0, 0, 0, 0.233); ">anotations from {{ project.name }}</h1></p>
+<a class="page" href="{% url 'project_list' project.id %}" class="btn btn-secondary mt-3"> {{ project.name }}</a>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>image</th>
+            <th>Label</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for annotation in annotations %}
+        
+            <tr>
+                <td class="thumbnail-cell">
+                    <p>(Image ID: {{ annotation.image.image_file.url }})</p>
+                    
+                    </form>
+                </td>
+                
+                
+                <td>
+                    <!-- Textarea for annotation input -->
+                  
+                    
+                   <p>{{ annotation.label }}</p>
+                    
+                </td>
+                
+                
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">No images available for this project.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<style>
+
+    table {
+        width: 10in; /* Adjusts to leave 2 inches of padding on both sides */
+        /* Adds padding to the left (space from sidebar) */
+        margin-right: 2in; /* Adds padding to the right */
+        background-color:#e6e6e62d ;
+        margin-top: 1.5cm;
+        border-radius: 10px;
+    }
+    
+    
+    table th, table td {
+        border: 1px solid #ddd;
+        padding: 10px; /* Add padding for spacing inside cells */
+        text-align: left;
+        vertical-align: middle; /* Ensures the content aligns in the middle vertically */
+        border-radius: 10px;
+        background-color: #f4f4f4;
+    }
+    
+    table th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+    
+    
+    
+  
+    
+
+    .page{
+        
+        color: black;
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 400;
+        text-align: center;
+        margin-left: 1cm;
+        
+        
+        padding: 14px 20px;
+        text-decoration: none;
+        border-radius: 0.3cm;
+        border: 3px solid rgba(0, 0, 0, 0.062);
+        width:4cm ;
+    }
+
+    .page:hover{
+        background-color: #ddd;
+        color: black;
+        border: 3px solid rgba(0, 0, 0, 0.493);
+    }
+
+</style>
+{% endblock %}

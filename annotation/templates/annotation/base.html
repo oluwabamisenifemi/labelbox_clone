@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labelbox Clone</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fixed Navbar */
+        nav {
+            
+            position: fixed; /* Fixed position */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            z-index: 1000; /* Ensures the navbar stays on top */
+            display: flex;
+            color: black;
+            padding: 10px 0;  /* More balanced padding */
+            background-color: white;
+            border-color: #ddd;
+            margin-left: 4in;
+        }
+
+        nav a {
+            display: block;
+            color: black;
+            font-size: medium;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 400;
+            text-align: center;
+            margin-left: 1.5cm;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 0.3cm;
+            border: 3px solid rgba(0, 0, 0, 0.062);
+            width:4cm ;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+            border: 3px solid rgba(0, 0, 0, 0.493);                                                                                                                         
+        }
+
+        nav a.active {
+            background-color: rgba(173, 216, 230, 0.418); 
+            color: #333;
+            border: 3px solid rgba(0, 0, 0, 0.493);
+        }
+
+        /* Fixed Sidebar */
+   
+
+        /* Main Content Area */
+        .content {
+            margin-left: 250px; /* Creates space for the fixed sidebar */
+            margin-top: 60px; /* Creates space for the fixed navbar */
+            padding: 20px;
+            overflow-y: auto; /* Makes the content scrollable */
+            height: calc(100vh - 60px); /* Full height minus navbar height */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <a href="{% url 'project_list' %}" class="{% if request.path == '/projects/' or request.path == '/' %}active{% endif %}">Projects</a>
+
+    <div >
+        <a style="border-color: #33333300; color:rgba(0, 0, 255, 0.493);" href="{% url 'createproject'%}"class="{% if request.path == '/createproject/' %}active{% endif %}">+ New project</a>
+    </div>
+   
+</nav>
+
+<!-- Sidebar -->
+
+
+
+<!-- Main Content Area -->
+<div class="content">
+    {% block content %}
+
+
+    {% if messages %}
+<div>
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+    
+    <!-- This is where the page content will be inserted -->
+    {% endblock %}
+</div>
+
+</body>
+</html>
