@@ -25,7 +25,7 @@
                            class="{% if selected_project and project.id == selected_project.id %}active{% endif %}">
                             {{ project.name }}
                         </a>
-                        <a class="functions" style="color: red;" href="{% url 'deleteproject' project.id %}" class="btn btn-danger">x</a>
+                        <a class="functions" style="color: red;" href="{% url 'deleteproject' project.id %}" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a>
 
                     </div>
                     
@@ -69,7 +69,7 @@
                                 <p>{{ image.image_file.url }}</p>
                                 <form action="{% url 'deleteimage' project_id=selected_project.id image_id=image.id %}" method="POST">
                                     {% csrf_token %}
-                                    <button style=" width:4cm; height:1.5cm; border-radius:0.3cm; margin-left:9cm;" type="submit" class="btn btn-danger">Delete</button>
+                                    <button style=" width:4cm; color:red; height:1.5cm; border-radius:0.3cm; margin-left:9cm;" type="submit" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
                                 </form>
                             </td>
                             
@@ -91,7 +91,7 @@
                                             </option>
                                         {% endfor %}
                                     </select>
-                                    <button type="submit" class="btn-update">Update</button>
+                                    <button type="submit" class="btn-update"><i class="bi bi-upload"></i>Update</button>
                                 </form>
                                 
                                 
@@ -111,7 +111,7 @@
                 </tbody>
             </table>
         {% else %}
-            <p>Please select or create a project.</p>
+            <p>Please select or create a project. <i class="bi bi-hourglass"></i></p>
         {% endif %}
     </div>
     

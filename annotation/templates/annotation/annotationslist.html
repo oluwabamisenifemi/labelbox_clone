@@ -2,7 +2,7 @@
 
 {% block content %}
 <p ><h1 style="margin-bottom: 1.5cm; margin-top: 1.5cm; color:rgba(0, 0, 0, 0.233); ">anotations from {{ project.name }}</h1></p>
-<a class="page" href="{% url 'project_list' project.id %}" class="btn btn-secondary mt-3"> {{ project.name }}</a>
+<a class="page" href="{% url 'project_list' project.id %}" class="btn btn-secondary mt-3"> <i class="bi bi-arrow-left"></i> {{ project.name }}</a>
 
 
 <table>
