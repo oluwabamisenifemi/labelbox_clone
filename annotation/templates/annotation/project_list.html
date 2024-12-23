@@ -45,7 +45,7 @@
             <a class="functions" href="{% url 'createlabel' selected_project.id %}" class="btn btn-primary">+ add label</a>
             
             <a class="functions" style="color: green;" href="{% url 'download_annotations' selected_project.id %}" class="btn btn-primary">
-                +Download 
+                <i class="bi bi-download"></i>   Download 
             </a>
             
             <a class="page" href="{% url 'annotationslist' selected_project.id %}" class="btn btn-primary">annotations</a>
@@ -406,6 +406,8 @@
             modal.style.display = "none"; // Hide the modal
         }
     });
+    
+
     
     </script>
     

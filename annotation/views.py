@@ -210,7 +210,7 @@ def download_annotations(request, project_id):
 
     
     if not annotations["annotations"]:
-        return HttpResponse("No annotations available for this project.", status=404)
+        return redirect('project_list', project_id=project_id)
 
  
     json_content = json.dumps(annotations, indent=4)
